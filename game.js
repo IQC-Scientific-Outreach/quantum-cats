@@ -812,6 +812,15 @@ class Level {
     }
     this.cam.dragStart(wx);
   }
+  arrowClick(sx, sy) { // tapping an off-screen arrow brings the camera to what it points at
+    const a = (this.arrows || []).find(a => Math.hypot(a.x - sx, a.y - sy) < 34);
+    if (!a) return false;
+    const cam = this.cam;
+    if (a.t.rail) { cam.target = null; cam.firstMove = true; cam.inertia = 0; cam.tx = cam.startX; }
+    else { cam.target = null; cam.follow(a.t, true); }
+    Audio.play('ui-click', 0.5);
+    return true;
+  }
   keyDown(k) {
     if (this.state === 'over' || this.optionsOpen) return false;
     const r = this.rail, act = k === ' ' || k === 'Enter';
@@ -950,12 +959,14 @@ class Level {
     const r = this.rail;
     if (r.state === 'ready' && r.readyT > 3) targets.push({ x: r.startPos()[0], y: r.startPos()[1], rail: true });
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    this.arrows = [];
     for (const t of targets) {
       const [sx, sy] = toS(t.x, t.y);
       if (sx > 0 && sx < W && sy > 0 && sy < H) continue;
       const cx = W / 2, cy = H / 2; let dx = sx - cx, dy = sy - cy;
       const s = Math.min((W * 0.45) / Math.abs(dx || 1e-6), (H * 0.42) / Math.abs(dy || 1e-6));
       const ax = cx + dx * s, ay = cy + dy * s, ang = Math.atan2(dy, dx);
+      this.arrows.push({ x: ax, y: ay, t });
       ctx.save(); ctx.translate(ax, ay); ctx.rotate(ang);
       ctx.fillStyle = t.rail ? '#ff4d3d' : '#3b7bff'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
       ctx.beginPath(); ctx.moveTo(18, 0); ctx.lineTo(-10, -13); ctx.lineTo(-4, 0); ctx.lineTo(-10, 13); ctx.closePath(); ctx.stroke(); ctx.fill();
@@ -1160,10 +1171,10 @@ function loop(now) {
 function toWorld(e) {
   const r = cv.getBoundingClientRect(); const sx = e.clientX - r.left, sy = e.clientY - r.top;
   const cam = S.cam, ppu = cam.ppu();
-  return [cam.x + (sx - W / 2) / ppu, cam.drawY() - (sy - H / 2) / ppu, sx];
+  return [cam.x + (sx - W / 2) / ppu, cam.drawY() - (sy - H / 2) / ppu, sx, sy];
 }
 let activePointer = null;
-cv.addEventListener('pointerdown', e => { if (!S || activePointer !== null) return; activePointer = e.pointerId; cv.setPointerCapture(e.pointerId); Audio.unlock(); const [x, y, sx] = toWorld(e); S.pointerDown(x, y); S.cam.dragMove && S.cam.drag && S.cam.dragMove(sx); });
+cv.addEventListener('pointerdown', e => { if (!S || activePointer !== null) return; activePointer = e.pointerId; cv.setPointerCapture(e.pointerId); Audio.unlock(); const [x, y, sx, sy] = toWorld(e); if (S.arrowClick(sx, sy)) { activePointer = null; return; } S.pointerDown(x, y); S.cam.dragMove && S.cam.drag && S.cam.dragMove(sx); });
 cv.addEventListener('pointermove', e => { if (!S || e.pointerId !== activePointer) return; const [x, y, sx] = toWorld(e); S.pointerMove(x, y, sx); });
 const up = e => { if (!S || e.pointerId !== activePointer) return; activePointer = null; S.pointerUp(); };
 cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up); cv.addEventListener('lostpointercapture', up);

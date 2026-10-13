@@ -77,10 +77,9 @@ button:focus-visible { outline: 3px solid #4da3ff; outline-offset: 3px; }
 #credits .edu-body { display: block; }
 #credit-list h3 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .05em; color: #a94300; margin: 14px 0 2px; }
 #credit-list p { font-size: 1.05rem; line-height: 1.3; }
-.logos { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; justify-content: center; margin: 18px 0 8px; }
+.logos { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; justify-content: flex-start; margin: 22px 0 8px; }
 .logos img { height: 40px; width: auto; object-fit: contain; }
-#thanks { text-align: center; font-size: 1rem; color: var(--muted); }
-#bugs { text-align: center; font-size: 1.1rem; margin-top: 10px; -webkit-user-select: text; user-select: text; }
+.selectable { -webkit-user-select: text; user-select: text; }
 @media (max-width: 560px) { .edu-body { grid-template-columns: 1fr; } .edu-body img { width: 110px; grid-row: auto; } }
 
 /* HUD */
@@ -202,8 +201,6 @@ button:focus-visible { outline: 3px solid #4da3ff; outline-offset: 3px; }
           <img src="img/Canada_png.webp" alt="Canada">
           <img src="img/sshrc_fip_wordmark_eng_jpg.webp" alt="Social Sciences and Humanities Research Council of Canada" style="height:18px">
         </div>
-        <p id="thanks"></p>
-        <p id="bugs"></p>
       </div>
     </div>
   </div>

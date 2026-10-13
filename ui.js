@@ -59,8 +59,14 @@ window.QCUI = (() => {
       const h = document.createElement('h3'); h.textContent = heads[i]; box.appendChild(h);
       const p = document.createElement('p'); names.forEach((n, j) => { if (j) p.appendChild(document.createElement('br')); p.appendChild(document.createTextNode(n)); }); box.appendChild(p);
     });
-    $('#thanks').textContent = L().thanks;
-    $('#bugs').textContent = L().bugs;
+    const section = (head, names, cls) => {
+      const h = document.createElement('h3'); h.textContent = head; box.appendChild(h);
+      const p = document.createElement('p'); if (cls) p.className = cls;
+      names.forEach((n, j) => { if (j) p.appendChild(document.createElement('br')); p.appendChild(document.createTextNode(n)); });
+      box.appendChild(p);
+    };
+    section(heads[6], L().thanksList);
+    section(L().bugsHead, [L().bugsLine], 'selectable');
   }
   function updateToggles() {
     const A = window.QC.Audio;

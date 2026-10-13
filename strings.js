@@ -33,8 +33,8 @@ const STRINGS = {
       digger: { title: 'Quantum Tunnelling', name: 'Digger', bio: 'Watch this cat! He will suddenly appear on the other side of a barrier, even when he didn’t have the energy to go over it or break it down.', facts: 'The wave-like behaviour of quantum particles allows them to appear on the other side of a barrier, even if the particles don’t have the energy to go over it or break it down.' },
       fuzzy: { title: 'Uncertainty', name: 'Fuzzy', bio: 'You are never certain where you’ll find this cat. There’s a fundamental limit on how much information you can know about her.', facts: 'Heisenberg’s uncertainty principle says that there is a fundamental limit on how much information one can know about the state of a quantum system.' }
     },
-    thanks: 'IQC thanks Mike and Ophelia Lazaridis, the Province of Ontario, and the Government of Canada for their visionary support.',
-    bugs: 'Bugs? Email iqc-outreach@uwaterloo.ca',
+    thanksList: ['Mike and Ophelia Lazaridis', 'The Province of Ontario', 'The Government of Canada', 'The Quantum Arcade by UBC Geering Up Engineering Outreach'],
+    bugsHead: 'Bugs?', bugsLine: 'Email iqc-outreach@uwaterloo.ca',
     creditHeads: ['Concept and Design', 'Game Developers', 'Art', 'IQC Scientific Contributors', 'IQC Project Managers', 'HTML version', 'Special Thanks']
   },
   fr: {
@@ -69,8 +69,8 @@ const STRINGS = {
       digger: { title: 'Effet tunnel', name: 'Digger', bio: 'Regarde bien ce chat! Il apparaît soudain de l’autre côté d’une barrière, même s’il n’avait pas assez d’énergie pour passer par-dessus ou la briser.', facts: 'Le comportement ondulatoire des particules quantiques leur permet d’apparaître de l’autre côté d’une barrière, même sans avoir l’énergie pour la franchir ou la briser.' },
       fuzzy: { title: 'Incertitude', name: 'Fuzzy', bio: 'On n’est jamais certain de l’endroit où on trouvera cette chatte. Il y a une limite fondamentale à ce qu’on peut savoir sur elle.', facts: 'Le principe d’incertitude de Heisenberg dit qu’il existe une limite fondamentale à l’information qu’on peut connaître sur l’état d’un système quantique.' }
     },
-    thanks: 'L’IQC remercie Mike et Ophelia Lazaridis, la province de l’Ontario et le gouvernement du Canada pour leur soutien visionnaire.',
-    bugs: 'Un bogue? Écris à iqc-outreach@uwaterloo.ca',
+    thanksList: ['Mike et Ophelia Lazaridis', 'La province de l’Ontario', 'Le gouvernement du Canada', 'The Quantum Arcade par UBC Geering Up Engineering Outreach'],
+    bugsHead: 'Un bogue?', bugsLine: 'Écris à iqc-outreach@uwaterloo.ca',
     creditHeads: ['Concept et conception', 'Développement du jeu', 'Illustrations', 'Collaborateurs scientifiques de l’IQC', 'Gestion de projet à l’IQC', 'Version HTML', 'Remerciements spéciaux']
   }
 };
@@ -80,6 +80,5 @@ const CREDITS = [
   ['Keith McLean (Independent)'],
   ['Juan Miguel Arrazola', 'John Donohue', 'Carolyn Earnest', 'Kent Fisher', 'Aimee Gunther', 'Sarah Kaiser', 'Martin Laforest', 'Jean-Philippe MacLean', 'Mike Mazurek', 'Thomas McConkey', 'Christopher Pugh', 'Jeff Salvail'],
   ['Tobi Day-Hamilton', 'Jodi Szimanski', 'Angela Olano'],
-  ['Ported from the Unity project by Claude (Anthropic), 2026'],
-  ['The Quantum Arcade', 'UBC Geering Up Engineering Outreach']
+  ['Ported from the Unity project by Claude (Anthropic), 2026']
 ];
