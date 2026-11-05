@@ -110,8 +110,9 @@ button:focus-visible { outline: 3px solid #4da3ff; outline-offset: 3px; }
 #res-lines .tip { font-size: 1.1rem; line-height: 1.35; color: var(--muted); }
 .res-btns { display: flex; justify-content: center; gap: 8px; margin-top: 18px; flex-wrap: wrap; padding: 0 12px; }
 .res-btns .btn-orange { min-width: 5.5em; }
-#rotate { position: absolute; left: 50%; bottom: 14px; translate: -50% 0; background: rgba(0,0,0,.65); color: #fff; padding: 8px 14px; border-radius: 20px; font-size: .95rem; z-index: 40; display: none; pointer-events: none; max-width: calc(100% - 32px); text-align: center; }
-@media (orientation: portrait) and (max-width: 700px) { body.ingame #rotate { display: block; } #tut { max-width: 52vw; } }
+#rotate { position: absolute; left: 50%; bottom: 14px; translate: -50% 0; background: rgba(0,0,0,.65); color: #fff; padding: 8px 14px; border-radius: 20px; font-size: .95rem; z-index: 40; display: none; pointer-events: none; max-width: calc(100% - 32px); text-align: center; animation: rotate-hint 5.6s forwards; }
+@keyframes rotate-hint { 0%, 89% { opacity: 1; } 100% { opacity: 0; } }
+@media (orientation: portrait) and (max-width: 700px) { #rotate { display: block; } #tut { max-width: 52vw; } }
 @media (max-height: 460px) { .lvl-group h2 { margin: 2px 4px; font-size: .9rem; } .lvl-btn { font-size: 1.3rem; } #levels .bar { font-size: 1.2rem; }  .scorecard { font-size: .95rem; } #hud-box { font-size: 1.25rem; } #tut-desc { font-size: .9rem; } .lvl-icon { height: 42px; } }
 @media (prefers-reduced-motion: reduce) { #btn-play { animation: none; } * { transition: none !important; } }
 </style>

@@ -75,7 +75,7 @@ const STRINGS = {
   }
 };
 const CREDITS = [
-  ['James Wallace (Faculty, UW School of Public Health and Health Systems)', 'Victor Cheung (PhD Candidate, Systems Design Engineering)', 'Neil Randall (Director, The Games Institute)'],
+  ['James Wallace (Faculty, UW School of Public Health and Health Systems)', 'Victor Cheung (PhD Graduate, Systems Design Engineering)', 'Neil Randall (Director, The Games Institute)'],
   ['Mike Brown (Independent)', 'Jagger Nast (BMath, UW Applied Mathematics)'],
   ['Keith McLean (Independent)'],
   ['Juan Miguel Arrazola', 'John Donohue', 'Carolyn Earnest', 'Kent Fisher', 'Aimee Gunther', 'Sarah Kaiser', 'Martin Laforest', 'Jean-Philippe MacLean', 'Mike Mazurek', 'Thomas McConkey', 'Christopher Pugh', 'Jeff Salvail'],

@@ -76,14 +76,18 @@ window.QCUI = (() => {
   function toggleSfx() { const A = window.QC.Audio; A.sfx = !A.sfx; window.QC.SAVE.sfx = A.sfx; window.QC.persist(); updateToggles(); click(); }
   function toggleMusic() { const A = window.QC.Audio; A.music = !A.music; window.QC.SAVE.music = A.music; window.QC.persist(); A.unlock(); A.applyMusic(); updateToggles(); click(); }
 
+  // Replay the portrait "turn sideways" hint (fades out via CSS after 5s).
+  function replayRotateHint() { const r = $('#rotate'); r.style.animation = 'none'; void r.offsetWidth; r.style.animation = ''; }
   function showMenu() {
     window.QC.unload(); currentLevel = -1;
+    replayRotateHint();
     document.body.classList.remove('ingame'); $('#game').tabIndex = -1; show($('#menu'), true); show($('#hud'), false); show($('#results'), false); show($('#options'), false);
     show($('#levels'), false); show($('#start'), true);
     renderLevels();
   }
   function startLevel(i, retry) {
     currentLevel = i;
+    if (!document.body.classList.contains('ingame')) replayRotateHint();
     document.body.classList.add('ingame'); $('#game').tabIndex = 0; show($('#menu'), false); show($('#results'), false); show($('#options'), false); show($('#hud'), true);
     $('#game').focus();
     window.QC.loadLevel(i, retry);
